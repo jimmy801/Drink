@@ -55,7 +55,7 @@ namespace Drink
 
         public Form1()
         {
-            this.Icon = Properties.Resources.drink_small;
+            this.Icon = Properties.Resources.drink1;
             InitializeComponent();
             periodPath = Application.UserAppDataPath + @"\drink_period.bin";
             //sp = new System.Media.SoundPlayer(@"D:\Work\Drink\bin\Debug\drink.wav");
@@ -264,7 +264,7 @@ namespace Drink
             double ratio = 16d / this.Icon.Height;
 
             notifyIcon = new NotifyIcon();
-            notifyIcon.Icon = this.Icon;
+            notifyIcon.Icon = Properties.Resources.drink_ico;
             this.ShowInTaskbar = true;
             notifyIcon.Visible = true;
 
