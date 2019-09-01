@@ -51,6 +51,11 @@ namespace Drink
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            SetWindowPos(this.Handle, HWND_TOPMOST, 0, 0, 0, 0, TOPMOST_FLAGS);
+        }
         #endregion
 
         public Form1()
@@ -488,10 +493,22 @@ namespace Drink
             }
         }
 
-
-        private void Form1_Load(object sender, EventArgs e)
+        #region show without steal focus
+        protected override bool ShowWithoutActivation
         {
-            SetWindowPos(this.Handle, HWND_TOPMOST, 0, 0, 0, 0, TOPMOST_FLAGS);
+            get { return true; }
         }
+
+        private const int WS_EX_TOPMOST = 0x00000008;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams createParams = base.CreateParams;
+                createParams.ExStyle |= WS_EX_TOPMOST;
+                return createParams;
+            }
+        }
+        #endregion
     }
 }
