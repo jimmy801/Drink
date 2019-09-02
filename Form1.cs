@@ -101,6 +101,7 @@ namespace Drink
                 }
                 if (displayWindow)
                 {
+                    SetWindowPos(this.Handle, HWND_TOPMOST, 0, 0, 0, 0, TOPMOST_FLAGS);
                     this.Visible = true;
                     //this.TopMost = true;
                 }
