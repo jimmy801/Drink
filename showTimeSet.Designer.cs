@@ -56,7 +56,7 @@
             0});
             this.secText.Name = "secText";
             this.secText.Size = new System.Drawing.Size(55, 25);
-            this.secText.TabIndex = 2;
+            this.secText.TabIndex = 0;
             this.secText.Click += new System.EventHandler(this.numText_Click);
             this.secText.Enter += new System.EventHandler(this.select_all_number);
             this.secText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.triggle_setBtn);

@@ -83,7 +83,6 @@ namespace Drink
                 StreamWriter Setting = new StreamWriter(f1.periodPath);
                 Setting.WriteLine(Convert.ToBase64String(Encoding.UTF8.GetBytes(f1.period + "::::" + f1.one_time + "::::" + f1.startup + "::::" + f1.idling_time)));
                 Setting.Close();
-                f1.t = 0;
                 f1.setTimeText();
             }
             WindowState = FormWindowState.Minimized;
@@ -104,12 +103,13 @@ namespace Drink
                         this.Location = cur.WorkingArea.Location;
                         this.CenterToScreen();
                         this.Visible = true;
-                        this.TopMost = true;
+                        //this.TopMost = true;
                         break;
                     }
                 }
             else if (WindowState == FormWindowState.Minimized)
             {
+                f1.t = 0;
                 f1.f2Show = false;
                 f1.timer1.Start();
                 f1.timer2.Start();
@@ -160,6 +160,10 @@ namespace Drink
             {
                 set_time();
                 e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                WindowState = FormWindowState.Minimized;
             }
         }
 

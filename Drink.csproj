@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="drink.ico" />
+    <None Include="Resources\idling.ico" />
     <None Include="Resources\drink_ico.ico" />
     <None Include="Resources\drink_small.ico" />
     <None Include="Resources\drink.ico" />

@@ -102,7 +102,7 @@ namespace Drink
                 if (displayWindow)
                 {
                     this.Visible = true;
-                    this.TopMost = true;
+                    //this.TopMost = true;
                 }
                 if (audioplay) sp.Play();
             }
@@ -178,7 +178,7 @@ namespace Drink
                 try
                 {
                     form_arr[i].TopMost = fShow[i] = false;
-                    form_arr[i].WindowState = WindowState = FormWindowState.Minimized;
+                    form_arr[i].WindowState = FormWindowState.Minimized;
                 }
                 catch { }
             }
@@ -349,7 +349,7 @@ namespace Drink
                     timer2.Stop();
                     this.Visible = false;
                     f3 = new showTimeSet(this);
-                    f3.TopMost = true;
+                    //f3.TopMost = true;
                     f3.WindowState = FormWindowState.Normal;
                     f3.Show();
                 }
@@ -370,7 +370,7 @@ namespace Drink
                     timer2.Stop();
                     this.Visible = false;
                     f4 = new idlingTimeSet(this);
-                    f4.TopMost = true;
+                    //f4.TopMost = true;
                     f4.WindowState = FormWindowState.Normal;
                     f4.Show();
                 }
@@ -477,8 +477,9 @@ namespace Drink
                         }
                     }
                     idling_show = true;
+                    this.Icon = Properties.Resources.idling;
                     this.Visible = true;
-                    this.TopMost = true;
+                    //this.TopMost = true;
                 }
             }
             // if stop ticking and isn't the pause mode means computer continue used from idling, then retick
@@ -487,6 +488,7 @@ namespace Drink
                 label1.Text = "喝水摟";
                 this.Visible = false;
                 idling_show = false;
+                this.Icon = Properties.Resources.drink1;
                 t = 0;
                 timer1.Start();
                 start_tick();
@@ -510,5 +512,14 @@ namespace Drink
             }
         }
         #endregion
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            /*if (WindowState == FormWindowState.Minimized)
+            {
+                WindowState = FormWindowState.Normal;
+                SetWindowPos(this.Handle, HWND_TOPMOST, 0, 0, 0, 0, TOPMOST_FLAGS);
+            }*/
+        }
     }
 }
