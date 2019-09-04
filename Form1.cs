@@ -47,7 +47,8 @@ namespace Drink
         static readonly IntPtr HWND_BOTTOM = new IntPtr(1);
         const UInt32 SWP_NOSIZE = 0x0001;
         const UInt32 SWP_NOMOVE = 0x0002;
-        const UInt32 TOPMOST_FLAGS = SWP_NOMOVE | SWP_NOSIZE;
+        const UInt32 SWP_NOACTIVATE = 0x0010;
+        const UInt32 TOPMOST_FLAGS = SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE;
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
@@ -102,6 +103,7 @@ namespace Drink
                 if (displayWindow)
                 {
                     SetWindowPos(this.Handle, HWND_TOPMOST, 0, 0, 0, 0, TOPMOST_FLAGS);
+                    //this.TopMost = false;
                     this.Visible = true;
                     //this.TopMost = true;
                 }
@@ -178,7 +180,8 @@ namespace Drink
                 if (i + 2 == n) continue;
                 try
                 {
-                    form_arr[i].TopMost = fShow[i] = false;
+                    /*form_arr[i].TopMost = false;*/
+                    fShow[i] = false;
                     form_arr[i].WindowState = FormWindowState.Minimized;
                 }
                 catch { }
@@ -329,7 +332,7 @@ namespace Drink
                     timer2.Stop();
                     this.Visible = false;
                     f2 = new timeSet(this);
-                    f2.TopMost = true;
+                    //f2.TopMost = true;
                     f2.WindowState = FormWindowState.Normal;
                     f2.Show();
                 }
