@@ -525,5 +525,10 @@ namespace Drink
                 SetWindowPos(this.Handle, HWND_TOPMOST, 0, 0, 0, 0, TOPMOST_FLAGS);
             }*/
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            notifyIcon.Visible = false;
+        }
     }
 }
